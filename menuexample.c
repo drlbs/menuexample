@@ -5,6 +5,7 @@
 #include <GL/glut.h>
 
 static int DRAWAXIS = 0;
+static int DRAWSPHERE = 0;
 
 typedef struct vertex {
     float x;
@@ -100,6 +101,10 @@ void drawAxes(int length)
     glPopMatrix();
 }
 
+void drawSphere()
+{
+    glutWireSphere(3.0,20,20);
+}
 
 
 void display(void)
@@ -122,7 +127,7 @@ void display(void)
     /* Draw a coordinate axis */
 
     if (DRAWAXIS) drawAxes(5);
-
+    if (DRAWSPHERE) drawSphere();
 
     glFlush();
     glutSwapBuffers();
@@ -137,6 +142,19 @@ void onAxis(int msg)
             break;
         case 2:
             DRAWAXIS = 0; 
+            break;
+    }
+    glutPostRedisplay();
+}
+
+void onSphere(int msg)
+{
+    switch (msg) {
+        case 1:
+            DRAWSPHERE = 1; 
+            break;
+        case 2:
+            DRAWSPHERE = 0; 
             break;
     }
     glutPostRedisplay();
