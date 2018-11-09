@@ -176,6 +176,7 @@ void reshape (int w, int h)
 int main(int argc, char** argv)
 {
 
+    // Menu types are of type integer
     int menu, axis, sphere;
 
     glutInit(&argc, argv);
